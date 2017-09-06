@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<style>
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    min-width: 1000;
+    text-align: center;
+}
+.bg-1{
+    background-color:#2B2B2B;
+    color:#f3f3f3;
+}
+.header{
+    height:100px;
+}
+.title{
+    padding-top: 50px;
+}
+    .logo{
+        min-width: 1000px;
+        height:230px;
+        margin:0px auto;
+    }
+        .logo-img{
+            height:90px;
+            width:120px;
+            font-size: 80px;
+        }
+        .bigtitle{
+            font-size:40px;
+            margin-top: 80px;
+            color: #eae5e3;
+        }
+        .lititle{
+            padding-left: 140px;
+            color: #7d7d7d;
+        }
+.search{
+    height:220px;
+    background-color: #903;
+    padding-top: 80px;
+}
+.form{
+    height:42px;
+    min-width: 1000px;
+    margin-left:33%;
+    margin-right: 25%;
+}
+.search-bar{
+    width:50%;
+    height:22px;
+    padding: 10px 0px 10px 7px;
+    border:0;
+    border-top: 1px;
+    float: left;
+}
+.search-sub{
+    background-color: #eaf4fc;
+    width:14.3%;
+    height:42px;
+    border:0;
+    float: left;
+}
+.neirong{
+    position: relative;
+}
+.nr-left{
+width:25%;
+background-color: #7a4171;
+float: left;
+height:100%;
+position: absolute;
+top:0px;
+left:0px;
+clear: both;
+}
+.inner{
+    float:left;
+    height:100%;
+    width:50%;
+    height:0px;
+    margin-left: 25%;
+}
+.nr-right{
+width:25%;
+background-color: #7a4171;
+float: right;
+height:100%;
+position: absolute;
+top:0px;
+left:75%;
+}
+.clear{
+    clear: both;
+}
+.footer{
+    height:300px;
+}
+</style>
+<head>
+    <title>根据贴吧页面id查询帖子内容</title>
+</head>
+<body>
+<div class="header bg-1">
+</div>
+<div class="title bg-1">
+<div class="logo">
+    <span class="logo-img">图&nbsp&nbsp</span><span class="bigtitle">这里是大标题</span><br>
+    <span>这里是小标题</span>
+</div>
+</div>
+<div class="search">
+<div class="form">
+    <input class="search-bar" type="text" name="key" placeholder="输入您要搜索的id">
+    <input class="search-sub" type="submit" value="搜索">
+</div>
+</div>
+<div class="neirong">
+<div class="nr-left"></div>
+<div class="inner"></div>
+<div class="nr-right"></div>
+<div class="clear"></div>
+</div>
+<div class="footer bg-1">
+</div>
+</body>
+</html>
+<!--搜索时判断是否是有效的 然后将页面滚动到内容处
+    内容是隐藏的 搜索的时候再出来
+    
