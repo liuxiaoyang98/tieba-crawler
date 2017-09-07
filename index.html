@@ -151,6 +151,12 @@ $(document).ready(function(){
                 $(".inner").append(inner);
             }
         $(".neirong").slideDown(2000);
+                $(".inner").append("<div class='page-num' >一共"+data[0]["页数"]+"</div>");
+                var options="<select>";
+                for(var i=1;i<=data[0]["页数"];i++){
+                                options+="<option value='"+i+"'>"+i+"</option>";
+                            }
+                            $(".inner").append(options);
         }
     });
         }
