@@ -2,193 +2,217 @@
 <html>
 <script src="/video/lxy/jquery.js"></script>
 <style>
-*{
-    margin: 0px;
-    padding: 0px;
-}
-body{
-    min-width: 1000;
-    text-align: center;
-}
-.bg-1{
-    background-color:#2B2B2B;
-    color:#f3f3f3;
-}
-.header{
-    height:100px;
-}
-.title{
-    padding-top: 50px;
-}
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    body{
+        min-width: 1000;
+        text-align: center;
+    }
+    .bg-1{
+        background-color:#2B2B2B;
+        color:#f3f3f3;
+    }
+    .header{
+        height:100px;
+    }
+    .title{
+        padding-top: 50px;
+    }
     .logo{
         min-width: 1000px;
         height:230px;
         margin:0px auto;
     }
-        .logo-img{
-            height:90px;
-            width:120px;
-            font-size: 80px;
-        }
-        .bigtitle{
-            font-size:40px;
-            margin-top: 80px;
-            color: #eae5e3;
-        }
-        .lititle{
-            padding-left: 140px;
-            color: #7d7d7d;
-        }
-.search{
-    height:220px;
-    background-color: #903;
-    padding-top: 80px;
-}
-.form{
-    height:42px;
-    min-width: 1000px;
-    margin-left:33%;
-    margin-right: 25%;
-}
-.search-bar{
-    width:50%;
-    height:22px;
-    padding: 10px 0px 10px 7px;
-    border:0;
-    border-top: 1px;
-    float: left;
-}
-.search-sub{
-    background-color: #eaf4fc;
-    width:14.3%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    height:42px;
-    border:0;
-    float: left;
-}
-.neirong{
-    position: relative;
-}
-.nr-left{
-width:25%;
-background-color: #7a4171;
-float: left;
-height:100%;
-position: absolute;
-top:0px;
-left:0px;
-clear: both;
-}
-.inner{
-    float:left;
-    height:100%;
-    width:40%;
-    padding: 25px 5% 30px 5%;
-    margin-left: 25%;
-}
-.author{
-    float:left;
-    min-width: 80px;
-    width:20%;
-}
-.words{
-    float:left;
-    margin: 0 auto;
-    text-align: left;
-    width:80%;
-}
-.time{
-    clear: both;
-    min-width: 150px;
-    width: 15%;
-    padding-left: 60%;
-    display: inline-block;
-}
-.high {
-    display: inline;
-    padding-left: 20px;
-}
-.nr-right{
-width:25%;
-background-color: #7a4171;
-float: right;
-height:100%;
-position: absolute;
-top:0px;
-left:75%;
-}
-.clear{
-    clear: both;
-}
-.footer{
-    height:300px;
-}
+    .logo-img{
+        height:90px;
+        width:120px;
+        font-size: 80px;
+    }
+    .bigtitle{
+        font-size:40px;
+        margin-top: 80px;
+        color: #eae5e3;
+    }
+    .lititle{
+        padding-left: 140px;
+        color: #7d7d7d;
+    }
+    .search{
+        height:220px;
+        background-color: #903;
+        padding-top: 80px;
+    }
+    .form{
+        height:42px;
+        min-width: 1000px;
+        margin-left:33%;
+        margin-right: 25%;
+    }
+    .search-bar{
+        width:50%;
+        height:22px;
+        padding: 10px 0px 10px 7px;
+        border:0;
+        border-top: 1px;
+        float: left;
+    }
+    .search-sub{
+        background-color: #eaf4fc;
+        width:14.3%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        height:42px;
+        border:0;
+        float: left;
+    }
+    .neirong{
+        position: relative;
+    }
+    .nr-left{
+        width:25%;
+        background-color: #7a4171;
+        float: left;
+        height:100%;
+        position: absolute;
+        top:0px;
+        left:0px;
+        clear: both;
+    }
+    .inner{
+        float:left;
+        height:100%;
+        width:40%;
+        padding: 25px 5% 30px 5%;
+        margin-left: 25%;
+    }
+    .author{
+        float:left;
+        min-width: 80px;
+        width:20%;
+    }
+    .words{
+        float:left;
+        margin: 0 auto;
+        text-align: left;
+        width:80%;
+    }
+    .time{
+        clear: both;
+        min-width: 150px;
+        width: 15%;
+        padding-left: 60%;
+        display: inline-block;
+    }
+    .high {
+        display: inline;
+        padding-left: 20px;
+    }
+    .nr-right{
+        width:25%;
+        background-color: #7a4171;
+        float: right;
+        height:100%;
+        position: absolute;
+        top:0px;
+        left:75%;
+    }
+    .clear{
+        clear: both;
+    }
+    .footer{
+        height:300px;
+    }
+    .page-num{
+        display: inline;
+    }
 </style>
 <script type="text/javascript">
     var arr=new Array();
-$(document).ready(function(){
+    var key;
+    $(document).ready(function(){
         $(".neirong").slideUp(1);
-    $(".search-sub").click(function(){
-        var key=$(".search-bar").val();
-        var rule1=/^\d{9,10}$/;
-        if(!key||!(rule1.test(key))||!(key>=500000000)){
-            $(".inner").html("请输入正确的内容! 10位500000000以上的数字");
-        }
-        else{
-    $.ajax({
-        dataType:"json",
-        url:"ret.php",
-        data:"id="+key,
-        type:"GET",
-        success:function(data){
-            for(key in data){
-                var inner='';
-                inner ="<div class='author'>"+data[key]["作者"]+":</div>";
-                inner+="<div class='words'>"+data[key]["回帖"]+"</div>";
-                inner+="<div class='time'>"+data[key]["时间"]+"</div>";
-                inner+="<div class='high'>"+data[key]["楼层"]+"</div><br><hr><br>";
-                $(".inner").append(inner);
+        $(".search-sub").click(function(){
+            key=$(".search-bar").val();
+            var rule1=/^\d{9,10}$/;
+            if(!key||!(rule1.test(key))||!(key>=500000000)){
+                $(".inner").html("请输入正确的内容! 10位500000000以上的数字");
             }
-        $(".neirong").slideDown(2000);
-                $(".inner").append("<div class='page-num' >一共"+data[0]["页数"]+"</div>");
-                var options="<select>";
-                for(var i=1;i<=data[0]["页数"];i++){
-                                options+="<option value='"+i+"'>"+i+"</option>";
-                            }
-                            $(".inner").append(options);
-        }
+            else{
+                ajaxsearch(key);
+            }
+        });
     });
+    function ajaxsearch(key){
+        $('html, body').animate({scrollTop: $(".header").offset().top}, 600);  
+        if($(".inner").html()){
+            $(".neirong").slideUp(600);
+            $(".inner").html("");
         }
-    });
-});
+        $.ajax({
+            dataType:"json",
+            url:"ret.php",
+            data:"id="+key,
+            type:"GET",
+            async:false,
+            success:function(data){
+                for(key in data){
+                    var inner='';
+                    inner ="<div class='author'>"+data[key]["作者"]+":</div>";
+                    inner+="<div class='words'>"+data[key]["回帖"]+"</div>";
+                    inner+="<div class='time'>"+data[key]["时间"]+"</div>";
+                    inner+="<div class='high'>"+data[key]["楼层"]+"</div><br><hr><br>";
+                    $(".inner").append(inner);
+                }
+                $(".neirong").slideDown(2000);
+                if(data[0]["页数"]>2){
+                    $(".inner").append("<div class='page-num' >一共"+data[0]["页数"]+"页,</div>");
+                    var options="跳转到<select class='select'>";
+                    for(var i=1;i<=data[0]["页数"];i++){
+                        options+="<option value='"+i+"'>"+i+"</option>";
+                    }
+                    options+="</select>页<button id=\"page\">跳转</button>";
+                    $(".inner").append(options);
+                }
+                    $('html, body').animate({  
+                        scrollTop: $(".neirong").offset().top  
+                    }, 2000);
+        $("#page").click(function(){
+            key=$(".search-bar").val();
+            var pn=key+"?pn="+$(".select").val();
+            ajaxsearch(pn);
+    });  
+                }
+            });
+    }
 </script>
 <head>
     <title>根据贴吧页面id查询帖子内容</title>
 </head>
 <body>
-<div class="header bg-1">
-</div>
-<div class="title bg-1">
-<div class="logo">
-    <span class="logo-img">图&nbsp&nbsp</span><span class="bigtitle">这里是大标题</span><br>
-    <span>这里是小标题</span>
-</div>
-</div>
-<div class="search">
-<div class="form">
-    <input class="search-bar" type="text" name="key" placeholder="输入您要搜索的id"/>
-    <button class="search-sub" >搜&nbsp&nbsp索</button>
-</div>
-</div>
-<div class="neirong">
-<div class="nr-left"></div>
-<div class="inner"></div>
-<div class="nr-right"></div>
-<div class="clear"></div>
-</div>
-<div class="footer bg-1">
-</div>
+    <div class="header bg-1">
+    </div>
+    <div class="title bg-1">
+        <div class="logo">
+            <span class="logo-img">图&nbsp&nbsp</span><span class="bigtitle">这里是大标题</span><br>
+            <span>这里是小标题</span>
+        </div>
+    </div>
+    <div class="search">
+        <div class="form">
+            <input class="search-bar" type="text" name="key" placeholder="输入您要搜索的id"/>
+            <button class="search-sub" >搜&nbsp&nbsp索</button>
+        </div>
+    </div>
+    <div class="neirong">
+        <div class="nr-left"></div>
+        <div class="inner"></div>
+        <div class="nr-right"></div>
+        <div class="clear"></div>
+    </div>
+    <div class="footer bg-1">
+    </div>
 </body>
 </html>
 <!--搜索时判断是否是有效的 然后将页面滚动到内容处
