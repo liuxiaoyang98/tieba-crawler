@@ -137,6 +137,10 @@
             key=$(".search-bar").val();
             var rule1=/^\d{9,10}$/;
             if(!key||!(rule1.test(key))||!(key>=500000000)){
+        $('html, body').animate({scrollTop: $(".header").offset().top}, 600);  
+        if($(".inner").html()){
+            $(".neirong").slideUp(600);
+            $(".inner").html("");}
                 $(".inner").html("请输入正确的内容! 10位500000000以上的数字");
             }
             else{
@@ -144,6 +148,8 @@
             }
         });
     });
+    function outinner(inner){
+    }
     function ajaxsearch(key){
         $('html, body').animate({scrollTop: $(".header").offset().top}, 600);  
         if($(".inner").html()){
